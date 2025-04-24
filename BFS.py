@@ -14,6 +14,8 @@ class BFS:
         self.came_from = {}  # Dictionar zur Nachverfolgung des Pfades
 
     def solve(self):
+        steps = 0
+
         start = self.maze.start  # Holen der Startposition aus dem Maze-Objekt
         goal = self.maze.goal  # Holen der Zielposition aus dem Maze-Objekt
 
@@ -27,7 +29,7 @@ class BFS:
             current = open_list.popleft()
             # Ziel gefunden?
             if current == goal:
-                return self.reconstruct_path(current)
+                return self.reconstruct_path(current), steps
 
             # Hole dir die benachbarten Knoten, die noch nicht besucht wurden
             for neighbor in self.get_neighbors(current):
@@ -35,7 +37,7 @@ class BFS:
                     self.visited.add(neighbor)  # Markiere als besucht
                     self.came_from[neighbor] = current  # Speichere den Pfad
                     open_list.append(neighbor)  # Füge den Nachbarn der open_list hinzu
-
+            steps += 1
         return None  # Kein Pfad gefunden
 
     def reconstruct_path(self, end):
@@ -69,16 +71,17 @@ class BFS:
 
 
 # Beispielhafte Nutzung
-maze = Mazegenerator.generate_maze_with_eller(10, 10)
+maze = Mazegenerator.generate_maze_with_eller(1000, 1000)
 
 bfs = BFS(maze)
-path = bfs.solve()
+path, steps = bfs.solve()
 bfs.mark_path(path)
 
 if path:
     maze.print_maze()
     print(f"Gefundener Pfad: {path}\n")
-    print(len(path))
+    print(f"Manhatten Distance: {len(path)}\n")
+    print(f"Steps: {steps}\n")
 
 else:
     print("Kein Pfad gefunden.")

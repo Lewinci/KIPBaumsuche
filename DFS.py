@@ -8,9 +8,10 @@ class DFS:
             raise TypeError("Es muss ein Objekt der Klasse Maze übergeben werden.")
 
         self.maze = maze
-        self.path_traceback = []
 
     def solve(self):
+
+        steps = 0
 
         closed_list = set()
         open_list = []
@@ -26,12 +27,13 @@ class DFS:
         while open_list:
             current = open_list.pop()
             if current == goal:
-                return self.reconstruct_path(parent)
+                return self.reconstruct_path(parent), steps
             for neighbour in self.getNeighbours(current):
                 if neighbour not in closed_list:
-                    closed_list.add(neighbour)
                     parent[neighbour] = current
+                    closed_list.add(neighbour)
                     open_list.append(neighbour)
+            steps += 1
 
         return None
 
@@ -65,16 +67,17 @@ class DFS:
 
 
 
-maze1 = Mazegenerator.generate_maze_with_eller(10, 10)
+maze1 = Mazegenerator.generate_maze_with_eller(1000, 1000)
 
 dfs = DFS(maze1)
-path = dfs.solve()
+path, steps = dfs.solve()
 dfs.mark_path(path)
 
 if path:
     maze1.print_maze()
     print(f"Gefundener Pfad: {path}\n")
-    print(len(path))
+    print(f"Manhatten Distance: {len(path)}\n")
+    print(f"Steps: {steps}\n")
 
 else:
     print("Kein Pfad gefunden.")
