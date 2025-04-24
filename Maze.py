@@ -1,3 +1,4 @@
+
 class Maze:
 
     def __init__(self, width, height):
@@ -20,7 +21,7 @@ class Maze:
         check_obstacle_position = (x,y)
         if check_obstacle_position != self.goal and check_obstacle_position != self.start:
             if 0 <= x < self.width and 0 <= y < self.height:
-                self.grid[x][y] = 1
+                self.grid[y][x] = 1
             else:
                 raise ValueError(f"Position ({x}, {y}) out of bounds.")
 
@@ -33,6 +34,10 @@ class Maze:
         else:
             raise ValueError(f"Position ({x}, {y}) out of bounds.")
 
+
+    def is_valid(self, x, y):
+        return (0 <= x < self.width and 0 <= y < self.height) and (self.grid[x][y] == 0)
+
     def print_maze(self):
         for y in range(self.height):
             row = ""
@@ -44,6 +49,8 @@ class Maze:
                     row += "G "
                 elif self.grid[y][x] == 1:
                     row += "█ "
+                elif self.grid[y][x] == '*':
+                    row += "* "
                 else:
                     row += ". "
             print(row)

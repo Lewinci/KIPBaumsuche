@@ -6,15 +6,11 @@ from Maze import Maze
 def manhattan_distance(p1, p2):
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
-def generate_maze_with_eller(maze_width, maze_height):
-    assert 0 < maze_width <= 100
-    assert 0 < maze_height <= 100
+def generate_maze_with_eller(width, height):
+    assert 0 < width <= 100
+    assert 0 < height <= 100
     #assert 0 < min_man_distance
     #assert min_man_distance <= max_man_distance <= (maze_width + maze_height)
-
-
-    width = maze_width
-    height = maze_height
 
     maze = Maze(width, height)
 
@@ -67,8 +63,5 @@ def generate_maze_with_eller(maze_width, maze_height):
     #maze.set_start(*start)
     #maze.set_goal(goal[0] + 1, goal[1] + 1)  # wie in set_goal mit -1 Korrektur'
 
+
     return maze
-
-
-maze = generate_maze_with_eller(50, 50)
-maze.print_maze()
