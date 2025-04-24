@@ -62,6 +62,7 @@ class BFS:
 
         return neighbors
 
+
     def mark_path(self, path):
             for c in path:
                 self.maze.grid[c[0]][c[1]] = '*'
