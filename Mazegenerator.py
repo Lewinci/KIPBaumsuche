@@ -7,8 +7,8 @@ def manhattan_distance(p1, p2):
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
 def generate_maze_with_eller(width, height):
-    assert 0 < width <= 100
-    assert 0 < height <= 100
+    assert 0 < width <= 1000
+    assert 0 < height <= 1000
     #assert 0 < min_man_distance
     #assert min_man_distance <= max_man_distance <= (maze_width + maze_height)
 

@@ -49,8 +49,10 @@ class Maze:
                     row += "G "
                 elif self.grid[y][x] == 1:
                     row += "█ "
-                elif self.grid[y][x] == '*':
-                    row += "* "
+                elif self.grid[y][x] == '🔸':
+                    row += "🔸"
+                elif self.grid[y][x] == '🔹':
+                    row += "🔹"
                 else:
                     row += ". "
             print(row)
