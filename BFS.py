@@ -67,11 +67,9 @@ class BFS:
 
     def mark_path(self, path):
             for c in path:
-                self.maze.grid[c[0]][c[1]] = '🔸'
+                self.maze.grid[c[0]][c[1]] = '@'
 
-
-# Beispielhafte Nutzung
-maze = Mazegenerator.generate_maze_with_eller(1000, 1000)
+maze = Mazegenerator.generate_maze(64)
 
 bfs = BFS(maze)
 path, steps = bfs.solve()

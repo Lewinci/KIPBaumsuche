@@ -1,5 +1,6 @@
 import random
 from Maze import Maze
+from googoomaze import create_maze
 
 #MIN_MANHATTEN_DISTANCE = 1
 
@@ -8,12 +9,10 @@ def manhattan_distance(p1, p2):
 
 def generate_maze_with_eller(width, height):
     assert 0 < width <= 1000
-    assert 0 < height <= 1000
-    #assert 0 < min_man_distance
-    #assert min_man_distance <= max_man_distance <= (maze_width + maze_height)
+    assert 0 < height <= 1000  
 
     maze = Maze(width, height)
-
+    epsilon = 0.2
     # Initialize each cell with a unique set
     sets = [i for i in range(width)]
     grid = [[0 for _ in range(width)] for _ in range(height)]
@@ -22,7 +21,7 @@ def generate_maze_with_eller(width, height):
     for y in range(height):
         # JOIN RIGHT CELLS
         for x in range(width - 1):
-            if sets[x] != sets[x + 1] and (random.random() < 0.5 or y == height - 1):
+            if sets[x] != sets[x + 1] and (random.random() < epsilon or y == height - 1):
                 old_set, new_set = sets[x + 1], sets[x]
                 for i in range(width):
                     if sets[i] == old_set:
@@ -65,3 +64,21 @@ def generate_maze_with_eller(width, height):
 
 
     return maze
+
+
+def generate_maze(dim):
+    # create a new maze from sample code
+    M = create_maze(dim)
+    print(M)
+    # converting the numpy array into a Maye object
+    maze = Maze(dim*2+1,dim*2+1)
+    for y in range(dim*2+1):
+        for x in range(dim*2+1):
+            if M[y,x] == 0:
+                maze.set_path(x, y)
+
+    maze.set_start(1,0)
+    maze.set_goal(dim*2,dim*2+1) 
+    return maze
+
+

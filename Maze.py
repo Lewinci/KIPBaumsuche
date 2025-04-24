@@ -44,15 +44,15 @@ class Maze:
             for x in range(self.width):
                 pos = (x, y)
                 if pos == self.start:
-                    row += "S "
+                    row += "S"
                 elif pos == self.goal:
-                    row += "G "
+                    row += "G"
                 elif self.grid[y][x] == 1:
-                    row += "█ "
-                elif self.grid[y][x] == '🔸':
-                    row += "🔸"
-                elif self.grid[y][x] == '🔹':
-                    row += "🔹"
+                    row += "█"
+                elif self.grid[y][x] == '@':
+                    row += "@"
+                elif self.grid[y][x] == 'X':
+                    row += "Y"
                 else:
-                    row += ". "
+                    row += " "
             print(row)
