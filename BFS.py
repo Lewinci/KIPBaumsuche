@@ -70,18 +70,18 @@ class BFS:
                 self.maze.grid[c[0]][c[1]] = '🔸'
 
 
-# Beispielhafte Nutzung
-maze = Mazegenerator.generate_maze_with_eller(15, 15)
-
-bfs = BFS(maze)
-path, steps = bfs.solve()
-bfs.mark_path(path)
-
-if path:
-    maze.print_maze()
-    print(f"Gefundener Pfad: {path}\n")
-    print(f"Manhatten Distance: {len(path)}\n")
-    print(f"Steps: {steps}\n")
-
-else:
-    print("Kein Pfad gefunden.")
+# # Beispielhafte Nutzung
+# maze = Mazegenerator.generate_maze_with_eller(15, 15)
+#
+# bfs = BFS(maze)
+# path, steps = bfs.solve()
+# bfs.mark_path(path)
+#
+# if path:
+#     maze.print_maze()
+#     print(f"Gefundener Pfad: {path}\n")
+#     print(f"Manhatten Distance: {len(path)}\n")
+#     print(f"Steps: {steps}\n")
+#
+# else:
+#     print("Kein Pfad gefunden.")

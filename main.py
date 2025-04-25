@@ -19,7 +19,7 @@ def run_algorithm(algorithm_class, maze, label):
         print("Kein Pfad gefunden.")
 
 def main():
-    width, height = 15, 15
+    width, height = 30, 30
 
     # Fixe Start-/Zielposition, immer gleiches Labyrinth für beide Algorithmen
     base_maze = generate_maze_with_eller(width, height)
