@@ -12,6 +12,7 @@ class Maze:
 
 
     def set_start(self, x, y):
+        self.set_path(x, y)
         self.start = (x, y)
 
     def set_goal(self, x, y):

@@ -67,7 +67,7 @@ class DFS:
 
 
 
-maze1 = Mazegenerator.generate_maze_with_eller(1000, 1000)
+maze1 = Mazegenerator.generate_maze_with_eller(15, 15)
 
 dfs = DFS(maze1)
 path, steps = dfs.solve()

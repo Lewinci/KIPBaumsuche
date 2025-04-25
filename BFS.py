@@ -71,7 +71,7 @@ class BFS:
 
 
 # Beispielhafte Nutzung
-maze = Mazegenerator.generate_maze_with_eller(1000, 1000)
+maze = Mazegenerator.generate_maze_with_eller(15, 15)
 
 bfs = BFS(maze)
 path, steps = bfs.solve()

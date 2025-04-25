@@ -1,12 +1,10 @@
 import random
 from Maze import Maze
 
-#MIN_MANHATTEN_DISTANCE = 1
-
 def manhattan_distance(p1, p2):
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
-def generate_maze_with_eller(width, height):
+def generate_maze_with_eller(width, height, min_man_distance=None, max_man_distance=None):
     assert 0 < width <= 1000
     assert 0 < height <= 1000
     #assert 0 < min_man_distance
@@ -52,16 +50,22 @@ def generate_maze_with_eller(width, height):
             if grid[y][x] == 1:
                 maze.set_path(x, y)
 
-    # Erzeuge gültige Start- und Zielposition mit Mindestdistanz
-    #valid_positions = [(x, y) for y in range(height) for x in range(width) if grid[y][x] == 1]
-    #while True:
-    #    start = random.choice(valid_positions)
-    #    goal = random.choice(valid_positions)
-    #    if max_man_distance >= manhattan_distance(start, goal) >= min_man_distance:
-    #        break
+        # --- START & ZIEL SETZEN ---
+        valid_positions = [(x, y) for y in range(height) for x in range(width) if grid[y][x] == 1]
 
-    #maze.set_start(*start)
-    #maze.set_goal(goal[0] + 1, goal[1] + 1)  # wie in set_goal mit -1 Korrektur'
+        if min_man_distance is not None and max_man_distance is not None:
+            while True:
+                start = random.choice(valid_positions)
+                goal = random.choice(valid_positions)
+                dist = manhattan_distance(start, goal)
+                if min_man_distance <= dist <= max_man_distance:
+                    break
+            maze.set_start(*start)
+            maze.set_goal(*goal)
+        else:
+            # Standard: Start links oben, Ziel rechts unten
+            maze.set_start(0, 0)
+            maze.set_goal(width, height)
 
 
     return maze
