@@ -51,7 +51,8 @@ def generate_maze_with_eller(width, height):
             if grid[y][x] == 1:
                 maze.set_path(x, y)
 
-    # Erzeuge gültige Start- und Zielposition mit Mindestdistanz
+
+    #Erzeuge gültige Start- und Zielposition mit Mindestdistanz
     #valid_positions = [(x, y) for y in range(height) for x in range(width) if grid[y][x] == 1]
     #while True:
     #    start = random.choice(valid_positions)
@@ -59,17 +60,16 @@ def generate_maze_with_eller(width, height):
     #    if max_man_distance >= manhattan_distance(start, goal) >= min_man_distance:
     #        break
 
-    #maze.set_start(*start)
     #maze.set_goal(goal[0] + 1, goal[1] + 1)  # wie in set_goal mit -1 Korrektur'
 
 
     return maze
 
 
-def generate_maze(dim):
+def generate_maze_with_dead_ends(dim):
     # create a new maze from sample code
     M = create_maze(dim)
-    print(M)
+    #print(M)
     # converting the numpy array into a Maye object
     maze = Maze(dim*2+1,dim*2+1)
     for y in range(dim*2+1):
@@ -78,7 +78,5 @@ def generate_maze(dim):
                 maze.set_path(x, y)
 
     maze.set_start(1,0)
-    maze.set_goal(dim*2,dim*2+1) 
+    maze.set_goal(dim*2,dim*2+1)
     return maze
-
-

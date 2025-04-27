@@ -69,17 +69,21 @@ class BFS:
             for c in path:
                 self.maze.grid[c[0]][c[1]] = '@'
 
-maze = Mazegenerator.generate_maze(64)
+    def set_maze(self, maze):
+        self.maze = maze
 
-bfs = BFS(maze)
-path, steps = bfs.solve()
-bfs.mark_path(path)
 
-if path:
-    maze.print_maze()
-    print(f"Gefundener Pfad: {path}\n")
-    print(f"Manhatten Distance: {len(path)}\n")
-    print(f"Steps: {steps}\n")
+#maze = Mazegenerator.generate_maze_with_dead_ends(64)
 
-else:
-    print("Kein Pfad gefunden.")
+#bfs = BFS(maze)
+#path, steps = bfs.solve()
+#bfs.mark_path(path)
+
+#if path:
+#    maze.print_maze()
+#    print(f"Gefundener Pfad: {path}\n")
+#    print(f"Manhatten Distance: {len(path)}\n")
+#    print(f"Steps: {steps}\n")
+
+#else:
+#    print("Kein Pfad gefunden.")

@@ -12,6 +12,7 @@ class Maze:
 
 
     def set_start(self, x, y):
+        self.set_path(x, y)
         self.start = (x, y)
 
     def set_goal(self, x, y):
@@ -44,15 +45,13 @@ class Maze:
             for x in range(self.width):
                 pos = (x, y)
                 if pos == self.start:
-                    row += "S"
+                    row += "S "
                 elif pos == self.goal:
-                    row += "G"
+                    row += "G "
                 elif self.grid[y][x] == 1:
-                    row += "█"
+                    row += "█ "
                 elif self.grid[y][x] == '@':
-                    row += "@"
-                elif self.grid[y][x] == 'X':
-                    row += "Y"
+                    row += "@ "
                 else:
-                    row += " "
+                    row += ". "
             print(row)

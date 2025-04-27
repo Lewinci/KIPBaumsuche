@@ -67,17 +67,17 @@ class DFS:
 
 
 
-maze1 = Mazegenerator.generate_maze(64)
+#maze1 = Mazegenerator.generate_maze(64)
 
-dfs = DFS(maze1)
-path, steps = dfs.solve()
-dfs.mark_path(path)
+#dfs = DFS(maze1)
+#path, steps = dfs.solve()
+#dfs.mark_path(path)
 
-if path:
-    maze1.print_maze()
-    print(f"Gefundener Pfad: {path}\n")
-    print(f"Manhatten Distance: {len(path)}\n")
-    print(f"Steps: {steps}\n")
+#if path:
+#    maze1.print_maze()
+#    print(f"Gefundener Pfad: {path}\n")
+#    print(f"Manhatten Distance: {len(path)}\n")
+#    print(f"Steps: {steps}\n")
 
-else:
-    print("Kein Pfad gefunden.")
+#else:
+#    print("Kein Pfad gefunden.")
