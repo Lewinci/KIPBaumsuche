@@ -80,3 +80,6 @@ def generate_maze_with_dead_ends(dim):
     maze.set_start(1,0)
     maze.set_goal(dim*2,dim*2+1)
     return maze
+
+maze = generate_maze_with_eller(100, 100)
+maze.print_maze()
